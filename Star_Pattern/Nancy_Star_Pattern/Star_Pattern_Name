@@ -1,0 +1,80 @@
+#include <stdio.h>
+
+#define SIZE 7
+
+// Function to print 'N'
+void printN(char arr[SIZE][SIZE]) {
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            if (j == 0 || j == SIZE - 1 || i == j) {
+                arr[i][j] = '*';
+            } else {
+                arr[i][j] = ' ';
+            }
+        }
+    }
+}
+
+// Function to print 'A'
+void printA(char arr[SIZE][SIZE]) {
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            if (i == 0 || i == SIZE / 2 || j == 0 || j == SIZE - 1) {
+                arr[i][j] = '*';
+            } else {
+                arr[i][j] = ' ';
+            }
+        }
+    }
+}
+
+// Function to print 'C'
+void printC(char arr[SIZE][SIZE]) {
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            if (i == 0 || i == SIZE - 1 || j == 0) {
+                arr[i][j] = '*';
+            } else {
+                arr[i][j] = ' ';
+            }
+        }
+    }
+}
+
+// Function to print 'Y'
+void printY(char arr[SIZE][SIZE]) {
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            if ((i == j && i < SIZE / 2) || (i + j == SIZE - 1 && i < SIZE / 2) || (i >= SIZE / 2 && j == SIZE / 2)) {
+                arr[i][j] = '*';
+            } else {
+                arr[i][j] = ' ';
+            }
+        }
+    }
+}
+
+int main() {
+    char N[SIZE][SIZE], A[SIZE][SIZE], C[SIZE][SIZE], Y[SIZE][SIZE];
+
+    printN(N);
+    printA(A);
+    printC(C);
+    printY(Y);
+
+    // Print the patterns horizontally
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) printf("%c", N[i][j]);
+        printf("   ");
+        for (int j = 0; j < SIZE; j++) printf("%c", A[i][j]);
+        printf("   ");
+        for (int j = 0; j < SIZE; j++) printf("%c", N[i][j]);
+        printf("   "); 
+        for (int j = 0; j < SIZE; j++) printf("%c", C[i][j]);
+        printf("   "); 
+        for (int j = 0; j < SIZE; j++) printf("%c", Y[i][j]);
+        printf("\n");
+    }
+
+    return 0;
+}
