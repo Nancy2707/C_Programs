@@ -1,0 +1,225 @@
+#include <stdio.h>
+#include <string.h>
+
+void printLetter(char letter, char output[5][6]) {
+    switch (letter) {
+        case 'A':
+            strcpy(output[0], "  *  ");
+            strcpy(output[1], " * * ");
+            strcpy(output[2], "*****");
+            strcpy(output[3], "*   *");
+            strcpy(output[4], "*   *");
+            break;
+        case 'B':
+            strcpy(output[0], "**** ");
+            strcpy(output[1], "*   *");
+            strcpy(output[2], "**** ");
+            strcpy(output[3], "*   *");
+            strcpy(output[4], "**** ");
+            break;
+        case 'C':
+            strcpy(output[0], " ****");
+            strcpy(output[1], "*    ");
+            strcpy(output[2], "*    ");
+            strcpy(output[3], "*    ");
+            strcpy(output[4], " ****");
+            break;
+        case 'D':
+            strcpy(output[0], "**** ");
+            strcpy(output[1], "*   *");
+            strcpy(output[2], "*   *");
+            strcpy(output[3], "*   *");
+            strcpy(output[4], "**** ");
+            break;
+        case 'E':
+            strcpy(output[0], "*****");
+            strcpy(output[1], "*    ");
+            strcpy(output[2], "*****");
+            strcpy(output[3], "*    ");
+            strcpy(output[4], "*****");
+            break;
+        case 'F':
+            strcpy(output[0], "*****");
+            strcpy(output[1], "*    ");
+            strcpy(output[2], "*****");
+            strcpy(output[3], "*    ");
+            strcpy(output[4], "*    ");
+            break;
+        case 'G':
+            strcpy(output[0], " ****");
+            strcpy(output[1], "*    ");
+            strcpy(output[2], "*  **");
+            strcpy(output[3], "*   *");
+            strcpy(output[4], " ****");
+            break;
+        case 'H':
+            strcpy(output[0], "*   *");
+            strcpy(output[1], "*   *");
+            strcpy(output[2], "*****");
+            strcpy(output[3], "*   *");
+            strcpy(output[4], "*   *");
+            break;
+        case 'I':
+            strcpy(output[0], "*****");
+            strcpy(output[1], "  *  ");
+            strcpy(output[2], "  *  ");
+            strcpy(output[3], "  *  ");
+            strcpy(output[4], "*****");
+            break;
+        case 'J':
+            strcpy(output[0], "  ***");
+            strcpy(output[1], "   * ");
+            strcpy(output[2], "   * ");
+            strcpy(output[3], "*  * ");
+            strcpy(output[4], " **  ");
+            break;
+        case 'K':
+            strcpy(output[0], "*   *");
+            strcpy(output[1], "*  * ");
+            strcpy(output[2], "***  ");
+            strcpy(output[3], "*  * ");
+            strcpy(output[4], "*   *");
+            break;
+        case 'L':
+            strcpy(output[0], "*    ");
+            strcpy(output[1], "*    ");
+            strcpy(output[2], "*    ");
+            strcpy(output[3], "*    ");
+            strcpy(output[4], "*****");
+            break;
+        case 'M':
+            strcpy(output[0], "*   *");
+            strcpy(output[1], "** **");
+            strcpy(output[2], "* * *");
+            strcpy(output[3], "*   *");
+            strcpy(output[4], "*   *");
+            break;
+        case 'N':
+            strcpy(output[0], "*   *");
+            strcpy(output[1], "**  *");
+            strcpy(output[2], "* * *");
+            strcpy(output[3], "*  **");
+            strcpy(output[4], "*   *");
+            break;
+        case 'O':
+            strcpy(output[0], " *** ");
+            strcpy(output[1], "*   *");
+            strcpy(output[2], "*   *");
+            strcpy(output[3], "*   *");
+            strcpy(output[4], " *** ");
+            break;
+        case 'P':
+            strcpy(output[0], "**** ");
+            strcpy(output[1], "*   *");
+            strcpy(output[2], "**** ");
+            strcpy(output[3], "*    ");
+            strcpy(output[4], "*    ");
+            break;
+        case 'Q':
+            strcpy(output[0], " *** ");
+            strcpy(output[1], "*   *");
+            strcpy(output[2], "*   *");
+            strcpy(output[3], "*  **");
+            strcpy(output[4], " ****");
+            break;
+        case 'R':
+            strcpy(output[0], "**** ");
+            strcpy(output[1], "*   *");
+            strcpy(output[2], "**** ");
+            strcpy(output[3], "*  * ");
+            strcpy(output[4], "*   *");
+            break;
+        case 'S':
+            strcpy(output[0], " ****");
+            strcpy(output[1], "*    ");
+            strcpy(output[2], " *** ");
+            strcpy(output[3], "    *");
+            strcpy(output[4], "**** ");
+            break;
+        case 'T':
+            strcpy(output[0], "*****");
+            strcpy(output[1], "  *  ");
+            strcpy(output[2], "  *  ");
+            strcpy(output[3], "  *  ");
+            strcpy(output[4], "  *  ");
+            break;
+        case 'U':
+            strcpy(output[0], "*   *");
+            strcpy(output[1], "*   *");
+            strcpy(output[2], "*   *");
+            strcpy(output[3], "*   *");
+            strcpy(output[4], " *** ");
+            break;
+        case 'V':
+            strcpy(output[0], "*   *");
+            strcpy(output[1], "*   *");
+            strcpy(output[2], "*   *");
+            strcpy(output[3], " * * ");
+            strcpy(output[4], "  *  ");
+            break;
+        case 'W':
+            strcpy(output[0], "*   *");
+            strcpy(output[1], "*   *");
+            strcpy(output[2], "* * *");
+            strcpy(output[3], "** **");
+            strcpy(output[4], "*   *");
+            break;
+        case 'X':
+            strcpy(output[0], "*   *");
+            strcpy(output[1], " * * ");
+            strcpy(output[2], "  *  ");
+            strcpy(output[3], " * * ");
+            strcpy(output[4], "*   *");
+            break;
+        case 'Y':
+            strcpy(output[0], "*   *");
+            strcpy(output[1], " * * ");
+            strcpy(output[2], "  *  ");
+            strcpy(output[3], "  *  ");
+            strcpy(output[4], "  *  ");
+            break;
+        case 'Z':
+            strcpy(output[0], "*****");
+            strcpy(output[1], "   * ");
+            strcpy(output[2], "  *  ");
+            strcpy(output[3], " *   ");
+            strcpy(output[4], "*****");
+            break;
+        default:
+            for (int i = 0; i < 5; i++) {
+                strcpy(output[i], "     ");
+            }
+            break;
+    }
+}
+
+int main() {
+    char name[100];
+    printf("Enter your name: ");
+    scanf("%s", name);
+
+    // Convert to uppercase
+    for(int i = 0; i < strlen(name); i++) {
+        if (name[i] >= 'a' && name[i] <= 'z') {
+            name[i] = name[i] - 'a' + 'A';
+        }
+    }
+
+    // Define a 2D array to store the pattern for each letter
+    char output[100][5][6]; // Assuming name length < 100
+
+    // Generate the patterns for each letter in the name
+    for(int i = 0; i < strlen(name); i++) {
+        printLetter(name[i], output[i]);
+    }
+
+    // Print the patterns line by line
+    for (int row = 0; row < 5; row++) {
+        for (int col = 0; col < strlen(name); col++) {
+            printf("%s ", output[col][row]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
