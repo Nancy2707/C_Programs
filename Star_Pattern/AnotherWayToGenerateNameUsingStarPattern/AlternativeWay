@@ -190,24 +190,20 @@ char patterns[26][ROWS][COLS] = {
     }
 };
 
-void printPattern(char ch) {
-    if (ch >= 'A' && ch <= 'Z') {
-        int index = ch - 'A';
-        for (int i = 0; i < ROWS; i++) {
-            for (int j = 0; j < COLS; j++) {
-                printf("%c", patterns[index][i][j]);
-            }
-            printf("\n");
-        }
-    }
-}
-
 void printNamePattern(const char* name) {
-    for (int i = 0; i < strlen(name); i++) {
-        if (name[i] >= 'A' && name[i] <= 'Z') {
-            printPattern(name[i]);
-            printf("\n"); // Separate each letter by a new line
+    int length = strlen(name);
+    
+    for (int row = 0; row < ROWS; row++) {
+        for (int i = 0; i < length; i++) {
+            if (name[i] >= 'A' && name[i] <= 'Z') {
+                int index = name[i] - 'A';
+                for (int col = 0; col < COLS; col++) {
+                    printf("%c", patterns[index][row][col]);
+                }
+            }
+            printf("  "); // Add space between letters
         }
+        printf("\n"); // Newline after each row of all letters
     }
 }
 
@@ -219,4 +215,5 @@ int main() {
     printNamePattern(name);
 
     return 0;
+
 }
