@@ -1,0 +1,85 @@
+#include <stdio.h>
+
+void displayMenu() {
+    printf("Temperature Conversion Menu:\n");
+    printf("1. Celsius to Fahrenheit\n");
+    printf("2. Celsius to Kelvin\n");
+    printf("3. Fahrenheit to Celsius\n");
+    printf("4. Fahrenheit to Kelvin\n");
+    printf("5. Kelvin to Celsius\n");
+    printf("6. Kelvin to Fahrenheit\n");
+    printf("7. Exit\n");
+    printf("Enter your choice: ");
+}
+
+float celsiusToFahrenheit(float celsius) {
+    return (celsius * 9.0 / 5.0) + 32;
+}
+
+float celsiusToKelvin(float celsius) {
+    return celsius + 273.15;
+}
+
+float fahrenheitToCelsius(float fahrenheit) {
+    return (fahrenheit - 32) * 5.0 / 9.0;
+}
+
+float fahrenheitToKelvin(float fahrenheit) {
+    return (fahrenheit - 32) * 5.0 / 9.0 + 273.15;
+}
+
+float kelvinToCelsius(float kelvin) {
+    return kelvin - 273.15;
+}
+
+float kelvinToFahrenheit(float kelvin) {
+    return (kelvin - 273.15) * 9.0 / 5.0 + 32;
+}
+
+int main() {
+    int choice;
+    float temperature, convertedTemperature;
+
+    while (1) {
+        displayMenu();
+        scanf("%d", &choice);
+
+        if (choice == 7) {
+            break;
+        }
+
+        printf("Enter the temperature to convert: ");
+        scanf("%f", &temperature);
+
+        switch (choice) {
+            case 1:
+                convertedTemperature = celsiusToFahrenheit(temperature);
+                printf("%.2f Celsius is %.2f Fahrenheit\n", temperature, convertedTemperature);
+                break;
+            case 2:
+                convertedTemperature = celsiusToKelvin(temperature);
+                printf("%.2f Celsius is %.2f Kelvin\n", temperature, convertedTemperature);
+                break;
+            case 3:
+                convertedTemperature = fahrenheitToCelsius(temperature);
+                printf("%.2f Fahrenheit is %.2f Celsius\n", temperature, convertedTemperature);
+                break;
+            case 4:
+                convertedTemperature = fahrenheitToKelvin(temperature);
+                printf("%.2f Fahrenheit is %.2f Kelvin\n", temperature, convertedTemperature);
+                break;
+            case 5:
+                convertedTemperature = kelvinToCelsius(temperature);
+                printf("%.2f Kelvin is %.2f Celsius\n", temperature, convertedTemperature);
+                break;
+            case 6:
+                convertedTemperature = kelvinToFahrenheit(temperature);
+                printf("%.2f Kelvin is %.2f Fahrenheit\n", temperature, convertedTemperature);
+                break;
+            default:
+                printf("Invalid choice. Please try again.\n");
+        }
+    }
+
+    return 0;
+}
