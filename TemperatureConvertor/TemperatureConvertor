@@ -1,5 +1,4 @@
 #include <stdio.h>
-
 void displayMenu() {
     printf("Temperature Conversion Menu:\n");
     printf("1. Celsius to Fahrenheit\n");
