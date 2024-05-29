@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    // Define a string
+    char str[] = "Hello, world!";
+    
+    // Calculate the length of the string
+    size_t length = strlen(str);
+    
+    // Print the length of the string
+    printf("The length of the string \"%s\" is: %zu\n", str, length);
+    
+    return 0;
+}
