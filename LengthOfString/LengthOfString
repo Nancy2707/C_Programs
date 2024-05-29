@@ -1,19 +1,24 @@
 #include <stdio.h>
+#include <string.h>
 
 int main() {
-    // Define a string
-    char str[] = "Hello, world!";
+    // Define a buffer to hold the input string
+    char str[100];
+
+    // Prompt the user for input
+    printf("Enter a string: ");
     
-    // Initialize length to 0
-    int length = 0;
-    
-    // Loop through each character in the string until the null terminator is encountered
-    while (str[length] != '\0') {
-        length++;
-    }
-    
+    // Get the input string from the user
+    fgets(str, sizeof(str), stdin);
+
+    // Remove the newline character at the end if present
+    str[strcspn(str, "\n")] = '\0';
+
+    // Calculate the length of the string
+    size_t length = strlen(str);
+
     // Print the length of the string
-    printf("The length of the string \"%s\" is: %d\n", str, length);
-    
+    printf("The length of the string \"%s\" is: %zu\n", str, length);
+
     return 0;
 }
