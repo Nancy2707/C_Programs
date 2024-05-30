@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+void printArray(int arr[], int n) {
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+void partitionUtil(int n, int max, int prefix[], int prefixSize) {
+    if (n == 0) {
+        printArray(prefix, prefixSize);
+        return;
+    }
+
+    for (int i = max; i >= 1; i--) {
+        if (i <= n) {
+            prefix[prefixSize] = i;
+            partitionUtil(n - i, i, prefix, prefixSize + 1);
+        }
+    }
+}
+
+void partition(int n) {
+    int prefix[n];
+    partitionUtil(n, n, prefix, 0);
+}
+
+int main() {
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+    printf("All partitions of %d are:\n", n);
+    partition(n);
+    return 0;
+}
