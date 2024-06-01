@@ -1,0 +1,114 @@
+#include <stdio.h>
+
+#define MAX_SIZE 100
+
+void printArray(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+int searchElement(int arr[], int size, int key) {
+    for (int i = 0; i < size; i++) {
+        if (arr[i] == key) {
+            return i; // Return the index of the found element
+        }
+    }
+    return -1; // Return -1 if the element is not found
+}
+
+void insertElement(int arr[], int *size, int element, int position) {
+    for (int i = *size; i > position; i--) {
+        arr[i] = arr[i - 1];
+    }
+    arr[position] = element;
+    (*size)++;
+}
+
+void deleteElement(int arr[], int *size, int position) {
+    for (int i = position; i < *size - 1; i++) {
+        arr[i] = arr[i + 1];
+    }
+    (*size)--;
+}
+
+void bubbleSort(int arr[], int size) {
+    for (int i = 0; i < size - 1; i++) {
+        for (int j = 0; j < size - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+
+void mergeArrays(int arr1[], int size1, int arr2[], int size2, int result[]) {
+    int i = 0, j = 0, k = 0;
+    while (i < size1 && j < size2) {
+        if (arr1[i] < arr2[j]) {
+            result[k++] = arr1[i++];
+        } else {
+            result[k++] = arr2[j++];
+        }
+    }
+    while (i < size1) {
+        result[k++] = arr1[i++];
+    }
+    while (j < size2) {
+        result[k++] = arr2[j++];
+    }
+}
+
+int main() {
+    int arr[MAX_SIZE], size = 0;
+    int choice, element, position, key;
+    int arr1[MAX_SIZE], size1, arr2[MAX_SIZE], size2, result[MAX_SIZE];
+
+    while (1) {
+        printf("\nArray Operations Menu:\n");
+        printf("1. Display Array\n");
+        printf("2. Search Element\n");
+        printf("3. Insert Element\n");
+        printf("4. Delete Element\n");
+        printf("5. Sort Array\n");
+        printf("6. Merge Arrays\n");
+        printf("7. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Array elements: ");
+                printArray(arr, size);
+                break;
+            case 2:
+                printf("Enter element to search: ");
+                scanf("%d", &key);
+                position = searchElement(arr, size, key);
+                if (position != -1) {
+                    printf("Element %d found at index %d\n", key, position);
+                } else {
+                    printf("Element %d not found\n", key);
+                }
+                break;
+            case 3:
+                printf("Enter element to insert: ");
+                scanf("%d", &element);
+                printf("Enter position to insert at: ");
+                scanf("%d", &position);
+                if (position >= 0 && position <= size) {
+                    insertElement(arr, &size, element, position);
+                    printf("Array after insertion: ");
+                    printArray(arr, size);
+                } else {
+                    printf("Invalid position!\n");
+                }
+                break;
+            case 4:
+                printf("Enter position to delete: ");
+                scanf("%d", &position);
+                if (position >= 0 && position < size) {
+                    deleteElement(arr, &size,
