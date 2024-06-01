@@ -111,4 +111,42 @@ int main() {
                 printf("Enter position to delete: ");
                 scanf("%d", &position);
                 if (position >= 0 && position < size) {
-                    deleteElement(arr, &size,
+                    deleteElement(arr, &size, position);
+                    printf("Array after deletion: ");
+                    printArray(arr, size);
+                } else {
+                    printf("Invalid position!\n");
+                }
+                break;
+            case 5:
+                bubbleSort(arr, size);
+                printf("Array after sorting: ");
+                printArray(arr, size);
+                break;
+            case 6:
+                printf("Enter size of first array: ");
+                scanf("%d", &size1);
+                printf("Enter elements of first array: ");
+                for (int i = 0; i < size1; i++) {
+                    scanf("%d", &arr1[i]);
+                }
+                printf("Enter size of second array: ");
+                scanf("%d", &size2);
+                printf("Enter elements of second array: ");
+                for (int i = 0; i < size2; i++) {
+                    scanf("%d", &arr2[i]);
+                }
+                mergeArrays(arr1, size1, arr2, size2, result);
+                printf("Merged array: ");
+                printArray(result, size1 + size2);
+                break;
+            case 7:
+                return 0;
+            default:
+                printf("Invalid choice!\n");
+        }
+    }
+
+    return 0;
+}
+
