@@ -1,0 +1,73 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Definition for singly-linked list node
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+// Function to create a new node
+struct Node* createNode(int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = NULL;
+    return newNode;
+}
+
+// Function to delete a node with a specific value
+void deleteNode(struct Node** head_ref, int key) {
+    // Store head node
+    struct Node* temp = *head_ref;
+    struct Node* prev = NULL;
+
+    // If head node itself holds the key to be deleted
+    if (temp != NULL && temp->data == key) {
+        *head_ref = temp->next; // Changed head
+        free(temp); // Free old head
+        return;
+    }
+
+    // Search for the key to be deleted, keep track of the previous node
+    while (temp != NULL && temp->data != key) {
+        prev = temp;
+        temp = temp->next;
+    }
+
+    // If key was not present in linked list
+    if (temp == NULL) return;
+
+    // Unlink the node from linked list
+    prev->next = temp->next;
+
+    free(temp); // Free memory
+}
+
+// Function to print linked list
+void printList(struct Node* node) {
+    while (node != NULL) {
+        printf("%d -> ", node->data);
+        node = node->next;
+    }
+    printf("NULL\n");
+}
+
+int main() {
+    // Create a simple linked list 10->20->30->40->50
+    struct Node* head = createNode(10);
+    head->next = createNode(20);
+    head->next->next = createNode(30);
+    head->next->next->next = createNode(40);
+    head->next->next->next->next = createNode(50);
+
+    printf("Original linked list:\n");
+    printList(head);
+
+    // Delete node with value 30
+    deleteNode(&head, 30);
+
+    printf("\nLinked list after deletion of 30:\n");
+    printList(head);
+
+    return 0;
+}
