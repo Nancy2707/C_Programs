@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Definition for singly-linked list node
+// Define the node structure
 struct Node {
     int data;
     struct Node* next;
@@ -15,59 +15,86 @@ struct Node* createNode(int data) {
     return newNode;
 }
 
-// Function to delete a node with a specific value
-void deleteNode(struct Node** head_ref, int key) {
-    // Store head node
-    struct Node* temp = *head_ref;
+// Function to insert a node at the end of the linked list
+void insert(struct Node** head, int data) {
+    struct Node* newNode = createNode(data);
+    if (*head == NULL) {
+        *head = newNode;
+    } else {
+        struct Node* temp = *head;
+        while (temp->next != NULL) {
+            temp = temp->next;
+        }
+        temp->next = newNode;
+    }
+}
+
+// Function to delete a node by value
+void deleteNode(struct Node** head, int data) {
+    struct Node* temp = *head;
     struct Node* prev = NULL;
 
-    // If head node itself holds the key to be deleted
-    if (temp != NULL && temp->data == key) {
-        *head_ref = temp->next; // Changed head
-        free(temp); // Free old head
+    // If the head node itself holds the data to be deleted
+    if (temp != NULL && temp->data == data) {
+        *head = temp->next;
+        free(temp);
         return;
     }
 
-    // Search for the key to be deleted, keep track of the previous node
-    while (temp != NULL && temp->data != key) {
+    // Search for the node to be deleted, keep track of the previous node
+    while (temp != NULL && temp->data != data) {
         prev = temp;
         temp = temp->next;
     }
 
-    // If key was not present in linked list
+    // If the data was not present in the linked list
     if (temp == NULL) return;
 
-    // Unlink the node from linked list
+    // Unlink the node from the linked list
     prev->next = temp->next;
-
-    free(temp); // Free memory
+    free(temp);
 }
 
-// Function to print linked list
-void printList(struct Node* node) {
-    while (node != NULL) {
-        printf("%d -> ", node->data);
-        node = node->next;
+// Function to display the linked list
+void display(struct Node* head) {
+    struct Node* temp = head;
+    while (temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
     }
     printf("NULL\n");
 }
 
 int main() {
-    // Create a simple linked list 10->20->30->40->50
-    struct Node* head = createNode(10);
-    head->next = createNode(20);
-    head->next->next = createNode(30);
-    head->next->next->next = createNode(40);
-    head->next->next->next->next = createNode(50);
+    struct Node* head = NULL;
+    int choice, data;
 
-    printf("Original linked list:\n");
-    printList(head);
+    while (1) {
+        printf("1. Insert\n2. Display\n3. Delete\n4. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
 
-    // Delete node with value 30
-    deleteNode(&head, 30);
-
-    printf("\nLinked list after deletion of 30:\n");
-    printList(head);
+        switch (choice) {
+            case 1:
+                printf("Enter data to insert: ");
+                scanf("%d", &data);
+                insert(&head, data);
+                break;
+            case 2:
+                display(head);
+                break;
+            case 3:
+                printf("Enter data to delete: ");
+                scanf("%d", &data);
+                deleteNode(&head, data);
+                break;
+            case 4:
+                exit(0);
+            default:
+                printf("Invalid choice. Please try again.\n");
+        }
+    }
 
     return 0;
 }
+
