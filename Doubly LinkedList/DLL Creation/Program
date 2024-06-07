@@ -1,0 +1,88 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define the node structure
+typedef struct Node {
+    int data;
+    struct Node* next;
+    struct Node* prev;
+} Node;
+
+// Function to create a new node
+Node* createNode(int data) {
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    newNode->data = data;
+    newNode->next = NULL;
+    newNode->prev = NULL;
+    return newNode;
+}
+
+// Function to insert a node at the beginning of the list
+void insertAtBeginning(Node** head, int data) {
+    Node* newNode = createNode(data);
+    newNode->next = *head;
+    if (*head != NULL) {
+        (*head)->prev = newNode;
+    }
+    *head = newNode;
+}
+
+// Function to insert a node at the end of the list
+void insertAtEnd(Node** head, int data) {
+    Node* newNode = createNode(data);
+    if (*head == NULL) {
+        *head = newNode;
+        return;
+    }
+    Node* temp = *head;
+    while (temp->next != NULL) {
+        temp = temp->next;
+    }
+    temp->next = newNode;
+    newNode->prev = temp;
+}
+
+// Function to display the list from the beginning
+void displayList(Node* head) {
+    Node* temp = head;
+    while (temp != NULL) {
+        printf("%d ", temp->data);
+        temp = temp->next;
+    }
+    printf("\n");
+}
+
+// Function to remove a node
+void removeNode(Node** head, Node* nodeToRemove) {
+    if (*head == NULL || nodeToRemove == NULL) {
+        return;
+    }
+    if (*head == nodeToRemove) {
+        *head = nodeToRemove->next;
+    }
+    if (nodeToRemove->next != NULL) {
+        nodeToRemove->next->prev = nodeToRemove->prev;
+    }
+    if (nodeToRemove->prev != NULL) {
+        nodeToRemove->prev->next = nodeToRemove->next;
+    }
+    free(nodeToRemove);
+}
+
+int main() {
+    Node* head = NULL;
+
+    insertAtBeginning(&head, 10);
+    insertAtBeginning(&head, 20);
+    insertAtEnd(&head, 30);
+
+    printf("Doubly Linked List: ");
+    displayList(head);
+
+    removeNode(&head, head->next); // Remove the second node
+
+    printf("List after removing second node: ");
+    displayList(head);
+
+    return 0;
+}
