@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <windows.h>
+
+typedef int (*AddFunc)(int, int);
+typedef int (*SubtractFunc)(int, int);
+
+int main() {
+    HINSTANCE hDll = LoadLibrary("mylib.dll");
+    if (!hDll) {
+        printf("Could not load the DLL\n");
+        return -1;
+    }
+
+    AddFunc add = (AddFunc)GetProcAddress(hDll, "add");
+    SubtractFunc subtract = (SubtractFunc)GetProcAddress(hDll, "subtract");
+
+    if (!add || !subtract) {
+        printf("Could not locate the function\n");
+        FreeLibrary(hDll);
+        return -1;
+    }
+
+    int a, b;
+    printf("Enter two integers: ");
+    scanf("%d %d", &a, &b);
+
+    int sum = add(a, b);
+    int diff = subtract(a, b);
+
+    printf("Sum: %d\n", sum);
+    printf("Difference: %d\n", diff);
+
+    FreeLibrary(hDll);
+    return 0;
+}
