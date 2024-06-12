@@ -1,0 +1,39 @@
+int main() {
+    struct Node* head = NULL;
+    int choice, data, oldValue, newValue;
+
+    while (1) {
+        printf("1. Insert\n2. Delete\n3. Update\n4. Display\n5. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Enter data to insert: ");
+                scanf("%d", &data);
+                insertAtEnd(&head, data);
+                break;
+            case 2:
+                printf("Enter data to delete: ");
+                scanf("%d", &data);
+                deleteNode(&head, data);
+                break;
+            case 3:
+                printf("Enter old value to update: ");
+                scanf("%d", &oldValue);
+                printf("Enter new value: ");
+                scanf("%d", &newValue);
+                updateNode(head, oldValue, newValue);
+                break;
+            case 4:
+                displayList(head);
+                break;
+            case 5:
+                exit(0);
+            default:
+                printf("Invalid choice, please try again.\n");
+        }
+    }
+
+    return 0;
+}
