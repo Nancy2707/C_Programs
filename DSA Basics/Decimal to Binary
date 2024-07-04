@@ -1,0 +1,18 @@
+ #include <iostream>
+ #include<math.h>
+ 
+int main() {
+    int num;
+    std::cout<<"Enter a number:";
+    std::cin>>num;
+    int i = 0;
+    int ans = 0;
+    while(num>0){
+        int bin= num  & 1;
+        ans = (bin * pow(10,i)) + ans;
+        num = num >> 1;
+        i++;
+    }
+    std::cout<<ans;
+    return 0;
+}
